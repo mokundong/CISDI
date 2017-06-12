@@ -25,9 +25,9 @@ for tup in rules:
 #print(new_rules)
 
 dic = dict(zip(res.ix[:,0],new_rules))
-fin_dic = {}
+fin_dic = []
 for k,v in dic.items():
     if v in fin_dic:
         fin_dic[v].append(k)
     else:
-        continue
+        fin_dic.append(k,v)
