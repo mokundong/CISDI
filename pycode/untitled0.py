@@ -19,15 +19,20 @@ for tup in rules:
     tmp = map(lambda x:int(x[0]) + int(x[1]),invert)
     tmp = list(tmp)
     tmp.sort()
-    #tmp = [str(i) for i in tmp]
     tmp = "".join([str(i) for i in tmp])
     new_rules.append(tmp)
-#print(new_rules)
-
 dic = dict(zip(res.ix[:,0],new_rules))
-fin_dic = []
+rev_dic = {}
 for k,v in dic.items():
-    if v in fin_dic:
-        fin_dic[v].append(k)
+    rev_dic.setdefault(v, []).append(k)
+    
+    
+###########################################
+df=pd.read_csv('df.csv')
+target_col = df.ix[:,16]
+A=B=0
+for col in target_col:
+    if col == 'A':
+        A = A + 1
     else:
-        fin_dic.append(k,v)
+        B = B + 1
