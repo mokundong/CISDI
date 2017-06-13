@@ -46,11 +46,10 @@ for k,v in rev_dic.items():
             a = df_A.ix[:,ii] == jj
             TL = TL & a
             A = sum(TL)
-            inter = (10000*A - A*A)/(74823*25177)
+            inter = (100000*A - A*A)/(74823*25177)
             IN.append(inter)
+        l.append(IN)    
         
-        break
-            
 #            n.append(h)
 #            for i,j in n:
 #                print(i,j)
