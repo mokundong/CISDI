@@ -6,7 +6,7 @@ Created on Mon Jun 12 21:42:55 2017
 """
 
 import pandas as pd
-import numpy as np
+import time
 import re
 
 res=pd.read_csv('res.csv')
@@ -31,17 +31,19 @@ for k,v in dic.items():
     
     
 ###########################################
+d={'819': [572, 581, 1593, 1601, 2084, 2085, 2097, 2346, 2347, 2359],
+ '2519': [31434, 31443, 48261, 48270, 51163, 51408],
+ '31214': [21648, 21651, 21652, 21669, 21674, 22189, 22277, 22302]}
 
 rul = []
-for k,v in rev_dic.items():
-    l=[]
+interest =[]
+for k,v in d.items():
+    NN=[]
     for j in v:
         ex = rules[j-1]
-        NN = []
         invert = []
         invert = re.compile(reExp1).findall(ex)
-        tmpe = map(lambda x :(int(x[0]),int(x[1])),invert)
-        tmpe = list(tmpe)
+        tmpe = list(map(lambda x :(int(x[0]),int(x[1])),invert))
         TL = 74823*[True]
         IN = []
         for sing_tmpe in tmpe:
@@ -50,5 +52,7 @@ for k,v in rev_dic.items():
             A = sum(TL)
         inter = (100000*A - A*A)/(74823*25177)
         NN.append(inter)
-        N = max(NN)
-        rul = rules[v[NN.index(max(NN))]]
+    N = max(NN)
+    interest.append(N)
+    rul.append(rules[v[NN.index(max(NN))]])
+result = pd.DataFrame({'interest':interest,'rules':rul},columns=['rules','interest'])
