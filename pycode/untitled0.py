@@ -32,35 +32,23 @@ for k,v in dic.items():
     
 ###########################################
 
-m=[]
+rul = []
 for k,v in rev_dic.items():
     l=[]
     for j in v:
         ex = rules[j-1]
-        invert_1 = []
-        invert_1 = re.compile(reExp1).findall(ex)
-        tmpe = list(map(lambda x :(int(x[0]),int(x[1])),invert_1))
+        NN = []
+        invert = []
+        invert = re.compile(reExp1).findall(ex)
+        tmpe = map(lambda x :(int(x[0]),int(x[1])),invert)
+        tmpe = list(tmpe)
         TL = 74823*[True]
         IN = []
-        for ii,jj in tmpe:
-            a = df_A.ix[:,ii] == jj
-            TL = TL & a
+        for sing_tmpe in tmpe:
+            b = df_A.ix[:,sing_tmpe[0]] == sing_tmpe[1]
+            TL = TL & b
             A = sum(TL)
-            inter = (100000*A - A*A)/(74823*25177)
-            IN.append(inter)
-        l.append(IN)    
-        
-#            n.append(h)
-#            for i,j in n:
-#                print(i,j)
-#        break
-         
-#            TL = 74823*[True]
-#            IN = []
-#            for i,j in h:
-#                print(i,j)
-#                a = df_A.ix[:,i] == j
-#                TL = TL & a
-#                A = sum(TL)
-#                interest = (10000*A - A*A)/(74823*25177) 
-#                IN.append(interest)
+        inter = (100000*A - A*A)/(74823*25177)
+        NN.append(inter)
+        N = max(NN)
+        rul = rules[v[NN.index(max(NN))]]
