@@ -37,7 +37,7 @@ d={'819': [572, 581, 1593, 1601, 2084, 2085, 2097, 2346, 2347, 2359],
 start = time.time()
 rul = []
 interest =[]
-for k,v in d.items():
+for k,v in rev_dic.items():
     NN=[]
     for j in v:
         ex = rules[j-1]
