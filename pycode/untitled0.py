@@ -31,13 +31,13 @@ for k,v in dic.items():
     
     
 ###########################################
-#d={'819': [572, 581, 1593, 1601, 2084, 2085, 2097, 2346, 2347, 2359],
-# '2519': [31434, 31443, 48261, 48270, 51163, 51408],
-# '31214': [21648, 21651, 21652, 21669, 21674, 22189, 22277, 22302]}
-#
+d={'819': [572, 581, 1593, 1601, 2084, 2085, 2097, 2346, 2347, 2359],
+ '2519': [31434, 31443, 48261, 48270, 51163, 51408],
+ '31214': [21648, 21651, 21652, 21669, 21674, 22189, 22277, 22302]}
+start = time.time()
 rul = []
 interest =[]
-for k,v in rev_dic.items():
+for k,v in d.items():
     NN=[]
     for j in v:
         ex = rules[j-1]
@@ -55,4 +55,6 @@ for k,v in rev_dic.items():
     N = max(NN)
     interest.append(N)
     rul.append(rules[v[NN.index(max(NN))]])
+end = time.time()
 result = pd.DataFrame({'interest':interest,'rules':rul},columns=['rules','interest'])
+times = end - start
