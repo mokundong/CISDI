@@ -64,7 +64,7 @@ def findMaxInterestOfEachclass(res,rules,N,rev_dic,len_A,len_B):
     return interest,ruless,totaltime
 
 if __name__ == '__main__':
-    N = 10000
+    N = 100000
     dfpath = 'df.csv'
     respath = 'res.csv'
     #加载数据
